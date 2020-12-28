@@ -69,29 +69,29 @@ d3.json(url, function(data) {
             
     }
  
-function getColor(d) {
-    return d > 1000 ? '#800026' :
-           d > 500  ? '#BD0026' :
-           d > 200  ? '#E31A1C' :
-           d > 100  ? '#FC4E2A' :
-           d > 50   ? '#FD8D3C' :
-           d > 20   ? '#FEB24C' :
-           d > 10   ? '#FED976' :
-                      '#FFEDA0';
+  });
+
+  function getColor(d) {
+    return d < 2 ? 'green' :
+           d < 3  ? 'yellow' :
+           d < 4  ? 'orange' :
+           d < 5  ? 'red' :
+           d < 6   ? 'purple' :
+                      'black';
 }
-    
+   
     var legend = L.control({position: 'bottomright'});
 
     legend.onAdd = function (map) {
     
         var div = L.DomUtil.create('div', 'info legend'),
             mags = [0,1, 2, 3, 4, 5],
-            labels = [];
+            labels = ["Magnitude"];
     
-        // loop through our density intervals and generate a label with a colored square for each interval
+        // loop through our magnitude intervals and generate a label with a colored square for each interval
         for (var i = 0; i < mags.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + circleColor(mags[i] + 1) + '"></i> ' +
+                '<i style="background:' + getColor(mags[i] + 1) + '"></i> ' +
                 mags[i] + (mags[i + 1] ? '&ndash;' + mags[i + 1] + '<br>' : '+');
         }
     
@@ -99,6 +99,5 @@ function getColor(d) {
     };
     
     legend.addTo(myMap);
-  });
  
   
