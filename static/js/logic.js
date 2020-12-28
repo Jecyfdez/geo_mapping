@@ -4,8 +4,8 @@ var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.ge
 // We set the longitude, latitude, and the starting zoom level
 // This gets inserted into the div with an id of 'map'
 var myMap = L.map("map", {
-    center: [0, 0],
-    zoom: 3
+    center: [40,-110],
+    zoom: 5
   });
 
 // Adding a tile layer (the background map image) to our map
