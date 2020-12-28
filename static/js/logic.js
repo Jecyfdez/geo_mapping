@@ -1,7 +1,5 @@
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
-// function createFeatures(earthquakeData)
-
 // Creating our initial map object
 // We set the longitude, latitude, and the starting zoom level
 // This gets inserted into the div with an id of 'map'
@@ -62,7 +60,7 @@ d3.json(url, function(data) {
         L.circleMarker([lat, long],{
             radius: mag*5,
             color: circleColor(mag)
-        }).bindPopup(`<h1> MAGNITUDE: ${mag}</h1>
+        }).bindPopup(`<h1> MAGNITUDE: ${mag} (mms)</h1>
         <h2>NEAREST LOCATION: ${location}</h2>
         <h3>COORDINATES : [${long}, ${lat}] </h3>`)
         .addTo(myMap)
